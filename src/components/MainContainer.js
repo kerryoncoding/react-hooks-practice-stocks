@@ -29,10 +29,33 @@ function removeFromPortfolio(stock){
   setPortfolioList(updatedPortfolio)
 }
 
+// function sortAlpha(){
+//   console.log("sortalpha")
+//   let updatedStocks = stockList.sort((a , b) => {
+//     let fa = a.name.toLowerCase(),
+//     fb = b.name.toLowerCase();
+
+//     if (fa < fb) {
+//       return -1;
+//     } 
+//     if (fa < fb) {
+//       return 1
+//     }
+//     return 0
+//   })
+//   setStockList(updatedStocks)
+// }
+
+// function sortNum(){
+//   console.log("sortNum")
+//   let updatedStocks = stockList.sort((a , b) => a.price - b.price)
+//   setStockList(updatedStocks)
+// }
+
 
   return (
     <div>
-      <SearchBar />
+      <SearchBar sortAlpha={sortAlpha} sortNum={sortNum}/>
       <div className="row">
         <div className="col-8">
           <StockContainer stockList={stockList} addToPortfolio={addToPortfolio} />
