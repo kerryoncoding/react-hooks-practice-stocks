@@ -1,26 +1,17 @@
 import React, {useState} from "react";
 
-function Stock({name, ticker, type, price}) {
-
-  const [isBought, setIsBought] = useState(false)
+function Stock({item, onStockClick}) {
 
   function buyStock(){
-    console.log("you bought: ", name)
-    //set state of isBought to True...
-    //send back up to Main Container
-    //filter True items to new array
-    //set
-
-
+    onStockClick(item)
   }
 
-
-  return (
-    <div>
-      <div className="card" onClick={buyStock}>
+   return (
+    <div onClick={buyStock}>
+      <div className="card" >
         <div className="card-body">
-          <h5 className="card-title">{name}</h5>
-          <p className="card-text">{price}</p>
+          <h5 className="card-title">{item.name}</h5>
+          <p className="card-text">{item.ticker}: {item.price}</p>
         </div>
       </div>
     </div>

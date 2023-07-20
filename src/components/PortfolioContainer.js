@@ -1,7 +1,18 @@
 import React from "react";
 import Stock from "./Stock";
 
-function PortfolioContainer() {
+function PortfolioContainer({portfolioList, removeFromPortfolio}) {
+
+
+  console.log("here:", portfolioList)
+
+  const portfolioPile = portfolioList.map((item)=> {
+    return <Stock
+     key={item.id}
+     item = {item}
+     onStockClick = {removeFromPortfolio}
+    />
+  })
 
   
 
@@ -9,9 +20,7 @@ function PortfolioContainer() {
   return (
     <div>
       <h2>My Portfolio</h2>
-      {
-        //render your portfolio stocks here
-      }
+      {portfolioPile}
     </div>
   );
 }
