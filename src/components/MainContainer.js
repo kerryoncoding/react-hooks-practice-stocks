@@ -29,28 +29,30 @@ function removeFromPortfolio(stock){
   setPortfolioList(updatedPortfolio)
 }
 
-// function sortAlpha(){
-//   console.log("sortalpha")
-//   let updatedStocks = stockList.sort((a , b) => {
-//     let fa = a.name.toLowerCase(),
-//     fb = b.name.toLowerCase();
+function sortAlpha(){
+  console.log("sortalpha")
+  let tempArr = stockList.map((item)=> item)
+  let updatedStocks = tempArr.sort((a , b) => {
+    let fa = a.name.toLowerCase(),
+    fb = b.name.toLowerCase();
 
-//     if (fa < fb) {
-//       return -1;
-//     } 
-//     if (fa < fb) {
-//       return 1
-//     }
-//     return 0
-//   })
-//   setStockList(updatedStocks)
-// }
+    if (fa < fb) {
+      return -1;
+    } 
+    if (fa < fb) {
+      return 1
+    }
+    return 0
+  })
+  setStockList(updatedStocks)
+}
 
-// function sortNum(){
-//   console.log("sortNum")
-//   let updatedStocks = stockList.sort((a , b) => a.price - b.price)
-//   setStockList(updatedStocks)
-// }
+function sortNum(){
+  console.log("sortNum")
+  let tempArr = stockList.map((item)=> item)
+  let updatedStocks = tempArr.sort((a , b) => a.price - b.price)
+  setStockList(updatedStocks)
+}
 
 
   return (
