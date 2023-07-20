@@ -1,11 +1,11 @@
 import React from "react";
 import Stock from "./Stock";
 
-function StockContainer({stockList, addToPortfolio}) {
+function StockContainer({visibleStocks, addToPortfolio}) {
 
-  console.log(stockList)
+  // console.log(visibleStocks)
 
-  const stockPile = stockList.map((item)=> {
+  const stockPile = visibleStocks.map((item)=> {
     return <Stock
      key={item.id}
      item = {item}

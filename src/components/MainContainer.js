@@ -7,6 +7,7 @@ function MainContainer() {
 
   const [stockList, setStockList] = useState([])
   const [portfolioList, setPortfolioList] = useState([])
+  const [visibleStocks, setVisibleStocks] = useState([])
   
   
   const URL="http://localhost:3001/stocks"
@@ -14,7 +15,10 @@ function MainContainer() {
   useEffect(()=>{
     fetch(URL)
     .then(res=>res.json())
-    .then(data=>setStockList(data))
+    .then(data=>{
+      setStockList(data)
+      setVisibleStocks(data)
+    })
   }, [])
 
 function addToPortfolio(stock){
@@ -45,6 +49,7 @@ function sortAlpha(){
     return 0
   })
   setStockList(updatedStocks)
+  setVisibleStocks(updatedStocks)
 }
 
 function sortNum(){
@@ -52,15 +57,24 @@ function sortNum(){
   let tempArr = stockList.map((item)=> item)
   let updatedStocks = tempArr.sort((a , b) => a.price - b.price)
   setStockList(updatedStocks)
+  setVisibleStocks(updatedStocks)
 }
 
+function sortFilter(e){
+  // setVisibleStocks(stockList)
+  console.log(e.target.value)
+  let tempArr = stockList.map((item)=> item)
+  let updatedStocks = tempArr.filter((item) => item.type === e.target.value)
+  setVisibleStocks(updatedStocks)
+  console.log("this is stocklist:", stockList)
+}
 
   return (
     <div>
-      <SearchBar sortAlpha={sortAlpha} sortNum={sortNum}/>
+      <SearchBar sortAlpha={sortAlpha} sortNum={sortNum} sortFilter={sortFilter}/>
       <div className="row">
         <div className="col-8">
-          <StockContainer stockList={stockList} addToPortfolio={addToPortfolio} />
+          <StockContainer visibleStocks={visibleStocks} addToPortfolio={addToPortfolio} />
         </div>
         <div className="col-4">
           <PortfolioContainer portfolioList={portfolioList} removeFromPortfolio={removeFromPortfolio}/>

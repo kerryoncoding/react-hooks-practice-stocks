@@ -1,6 +1,6 @@
 import React from "react";
 
-function SearchBar({sortAlpha, sortNum}) {
+function SearchBar({sortAlpha, sortNum, sortFilter}) {
   return (
     <div>
       <strong>Sort by:</strong>
@@ -27,7 +27,7 @@ function SearchBar({sortAlpha, sortNum}) {
       <br />
       <label>
         <strong>Filter:</strong>
-        <select onChange={null}>
+        <select onChange={sortFilter}>
           <option value="Tech">Tech</option>
           <option value="Sportswear">Sportswear</option>
           <option value="Finance">Finance</option>
